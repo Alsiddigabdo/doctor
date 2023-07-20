@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    حجز موعد
+  </title>
+  
+ 
+    <style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+
+  form {
+    width: 700px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+
+  label {
+    display: block;
+    color: #004aad;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="time"],
+  input[type="file"],
+  input[type="checkbox"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+  }
+
+  /* إضافة جمالية الأزهار بلون نيلي */
+
+
+  /* تعديل تنسيق العناصر */
+  form {
+    width: 500px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    margin-top: 100px;
+  }
+
+  label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+  }
+
+  select,
+  input[type="checkbox"],
+  input[type="file"] {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+    /* تنسيق الزر */
+  input[type="submit"] {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    background-color: #004aad;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  input[type="submit"]:hover {
+    background-color: #002b6b;
+  }
+  .clock {
+  font-size: 3rem;
+  color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px; /* تعديل العرض حسب الحاجة */
+  height: 100px; /* تعديل الارتفاع حسب الحاجة */
+  padding-left:70px ;
+  padding-top:250px ;
+  
+
+}
+h1 {
+    text-align: center;
+    color: #004aad;
+    margin-top: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 0;
+    z-index: 9999;
+  }
+</style>
+
+</head>
+<body>
+
+    
+<h1>حجز موعد عند طبيب</h1>
+  <form>
+            <div class="clock">
+              <span id="time"></span>
+            </div>
+
+    <label for="name">الاسم:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    
+    
+    
+
+<label for="services">الخدمات المتاحة:</label>
+<select id="services" name="services" multiple required>
+  <option value="service1">الخدمة 1</option>
+  <option value="service2">الخدمة 2</option>
+  <option value="service3">الخدمة 3</option>
+</select><br><br>
+
+
+<label for="upload">تحميل الملف:</label>
+<input type="file" id="upload" name="upload"><br><br>
+
+
+<label for="phone">رقم الهاتف:</label>
+<input type="tel" id="phone" name="phone" required><br><br>
+
+<label for="date">تاريخ الحجز:</label>
+<input type="date" id="date" name="date" required><br><br>
+
+<label for="time">وقت الحجز:</label>
+<input type="time" id="time" name="time" required><br><br>
+<label for="reason">سبب الحجز:</label>
+<textarea id="reason" name="reason" required></textarea><br><br>
+
+<input type="submit" value="حجز الموعد">
+  </form>
+  
+  
+     <script>
+  // الحصول على النموذج
+  var form = document.querySelector('form');
+
+  // تعيين الحدث على إرسال النموذج
+  form.addEventListener('submit', function(event) {
+    // منع سلوك الافتراضي للنموذج
+    event.preventDefault();
+
+    // جمع البيانات من النموذج
+    var name = document.getElementById('name').value;
+    var services = document.getElementById('services').value;
+    var upload = document.getElementById('upload').value;
+    var phone = document.getElementById('phone').value;
+    var date = document.getElementById('date').value;
+    var time = document.getElementById('time').value;
+    var reason = document.getElementById('reason').value;
+
+    // إرسال بيانات النموذج عبر البريد الإلكتروني
+    var mailtoLink = 'mailto:sediagtahoy@gmail.com' +
+      '?subject=' + encodeURIComponent('حجز موعد') +
+      '&body=' + encodeURIComponent('الاسم: ' + name +
+        '\nالخدمات المتاحة: ' + services +
+        '\nتحميل الملف: ' + upload +
+        '\nرقم الهاتف: ' + phone +
+        '\nتاريخ الحجز: ' + date +
+        '\nوقت الحجز: ' + time +
+        '\nسبب الحجز: ' + reason);
+
+    // فتح رابط البريد الإلكتروني
+    window.location.href = mailtoLink;
+  });
+  //كود الساعة الرقمية
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+  
+    const timeString = `${hours}:${minutes}:${seconds}`;
+    document.getElementById('time').textContent = timeString;
+  }
+  
+  // تحديث الساعة كل ثانية
+  setInterval(updateClock, 1000);
+  
+  // تحديث الساعة عند تحميل الصفحة
+  updateClock();
+</script>
+   <script src="main.js"></script>
+</body>
+</html>
