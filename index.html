@@ -5,23 +5,24 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>حجز مووعد</title>
+  <title>حجز موعد</title>
   <style>
-    /* ستايل الصفحة هنا */
+    /* الستايل هنا */
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f9f9f9;
-    }
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #f9f9f9;
+        }
 
     form {
       width: 400px;
       padding: 20px;
       background-color: #fff;
       border-radius: 5px;
-      margin-top: 50px;
+      margin-top: 80px;
     }
+
 
     h1 {
       text-align: center;
@@ -30,10 +31,12 @@
       position: fixed;
       top: 0;
       width: 100%;
+      height:80px;
       background-color: #fff;
       padding: 10px 0;
       z-index: 9999;
     }
+
 
     label {
       display: block;
@@ -60,37 +63,13 @@
       color: #333;
     }
 
-    /* إضافة جمالية الأزهار بلون نيلي */
-    body {
-      background-image: url('path/to/flowers.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
+    input[type="submit"]:hover {
+      background-color: #002b6b;
     }
-
-    /* تعديل تنسيق العناصر */
-    form {
-      width: 500px;
-      padding: 30px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 10px;
-      margin-top: 100px;
+    input[type="submit"]:hover {
+      background-color: #002b6b;
     }
-
-    label {
-      display: inline-block;
-      width: 150px;
-      text-align: right;
-    }
-
-    select,
-    input[type="checkbox"],
-    input[type="file"] {
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    /* تنسيق الزر */
+        /* تنسيق الزر */
     input[type="submit"] {
       display: block;
       width: 200px;
@@ -103,82 +82,54 @@
       font-size: 16px;
       cursor: pointer;
     }
-    input[type="submit"]:hover {
-      background-color: #002b6b;
-    }
-  </style>
-</head>
+    /* تجميل وتحديد شكل عنصر select */
+select {
+  display: block;
+  width: 300px; /* تعديل حجم العنصر حسب الحاجة */
+  margin: 0 auto; /* وضع العنصر في وسط الشاشة أفقيًا */
+  padding: 10px;
+  border: 2px solid #004aad;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  appearance: none; /* إزالة الأسلوب الافتراضي لعنصر select */
+  background-image: url('path/to/custom-arrow.png'); /* إضافة صورة أيقونة السهم الخاصة بالعنصر */
+  background-repeat: no-repeat;
+  background-position: right center; /* وضع الأيقونة عند اليمين ووسط العنصر */
+  cursor: pointer;
+}
 
-<!DOCTYPE html>
-<html lang="ar">
+/* تجميل الخيارات المنسدلة */
+select option {
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>حجز موعد</title>
-  <style>
-    /* الستايل هنا */
-    body {
-      background-image: url('path/to/flowers.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f9f9f9;
-    }
+/* تغيير شكل العنصر عند التفاعل معه */
+select:hover,
+select:focus {
+  border-color: #002b6b; /* تغيير لون الحدود عند التحويم بالفأرة أو التركيز */
+  box-shadow: 0 0 5px rgba(0, 42, 107, 0.5); /* إضافة ظل للعنصر عند التحويم بالفأرة أو التركيز */
+}
+/* تجميل خانة CAPTCHA */
+label[for="captcha"] {
+  display: inline-block;
+  color: #004aad;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-left:35px ;
+}
 
-    form {
-      width: 500px;
-      padding: 30px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 10px;
-      margin-top: 100px;
-    }
-
-    h1 {
-      text-align: center;
-      color: #004aad;
-      margin-top: 0;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #fff;
-      padding: 10px 0;
-      z-index: 9999;
-    }
-
-    label {
-      display: inline-block;
-      width: 150px;
-      text-align: right;
-    }
-
-    select,
-    input[type="checkbox"],
-    input[type="file"] {
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    input[type="submit"] {
-      display: block;
-      width: 200px;
-      margin: 0 auto;
-      background-color: #004aad;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #002b6b;
-    }
+#captchaQuestion {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+  
   </style>
 </head>
 
@@ -268,18 +219,7 @@
       });
     }
 
-    // دالة للتحقق من صحة CAPTCHA وإرسال البريد عندما تكون الإجابة
-
-
-
-User
-واصل
-
-ChatGPT
-صحيحة
-
-html
-Copy code
+   
     // دالة للتحقق من صحة CAPTCHA وإرسال البريد عندما تكون الإجابة صحيحة
     function validateCaptcha() {
       var captchaAnswer = parseInt(document.getElementById('captcha').value, 10);
