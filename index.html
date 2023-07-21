@@ -179,6 +179,7 @@ input[type="text"]#captcha {
     <input type="submit" value="حجز الموعد" id="submitBtn">
   </form>
 
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
     // الحصول على النموذج
     var form = document.getElementById('appointmentForm');
@@ -197,6 +198,27 @@ input[type="text"]#captcha {
     // تنفيذ دالة إنشاء CAPTCHA عند تحميل الصفحة
     var correctAnswer = generateCaptchaQuestion();
 
+    // Function to send the email
+    function sendEmail() {
+      var templateParams = {
+        name: name,
+        gender: gender,
+        services: services,
+        phone: phone,
+        date: date,
+        time: time,
+        reason: reason,
+      };
+
+      // Replace with your EmailJS service ID and template ID
+      emailjs.send("service_ql110ut", "template_lg2nhwj", templateParams, "user_7wKvCLIVPb3U73ngz")
+        .then(function (response) {
+          console.log("Email sent successfully!", response);
+        }, function (error) {
+          console.error("Failed to send email!", error);
+        });
+    }
+
     // تعيين الحدث على إرسال النموذج
     form.addEventListener('submit', function(event) {
       // منع سلوك الافتراضي للنموذج
@@ -213,12 +235,14 @@ input[type="text"]#captcha {
       var date = document.getElementById('date').value;
       var time = document.getElementById('time').value;
       var reason = document.getElementById('reason').value;
+      
       var captchaAnswer = parseInt(document.getElementById('captcha').value, 10);
 
       // التحقق من صحة الإجابة
       if (captchaAnswer === correctAnswer) {
         // إرسال النموذج إذا كانت الإجابة صحيحة
         alert('تم تأكيد أنك إنسان!');
+        sendEmail(); // إرسال البريد الإلكتروني
         form.submit();
       } else {
         // عرض رسالة خطأ إذا كانت الإجابة غير صحيحة
@@ -232,3 +256,5 @@ input[type="text"]#captcha {
   </script>
 </body>
 </html>
+
+      
