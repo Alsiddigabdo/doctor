@@ -8,140 +8,111 @@
   <title>
     حجز موعد
   </title>
-  <h1>حجز موعد</h1>
   <style>
+    /* ستايل الصفحة هنا */
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f9f9f9;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+  }
 
-    form {
-      width: 400px;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 5px;
-      margin-top: 50px;
-    }
+  form {
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-top: 50px;
+  }
 
-    h1 {
-      text-align: center;
-      color: #004aad;
-      margin-top: 0;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #fff;
-      padding: 10px 0;
-      z-index: 9999;
-    }
+  h1 {
+    text-align: center;
+    color: #004aad;
+    margin-top: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 0;
+    z-index: 9999;
+  }
 
-    label {
-      display: block;
-      color: #004aad;
-      margin-bottom: 10px;
-      text-align: center;
-    }
+  label {
+    display: block;
+    color: #004aad;
+    margin-bottom: 10px;
+    text-align: center;
+  }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="date"],
-    input[type="time"],
-    input[type="number"],
-    input[type="checkbox"],
-    textarea,
-    select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      color: #333;
-    }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="time"],
+  input[type="file"],
+  input[type="checkbox"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+  }
 
-    /* إضافة جمالية الأزهار بلون نيلي */
-    body {
-      background-image: url('path/to/flowers.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
+  /* إضافة جمالية الأزهار بلون نيلي */
+  body {
+    background-image: url('path/to/flowers.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 
-    /* تعديل تنسيق العناصر */
-    form {
-      width: 500px;
-      padding: 30px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 10px;
-      margin-top: 100px;
-    }
+  /* تعديل تنسيق العناصر */
+  form {
+    width: 500px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    margin-top: 100px;
+  }
 
-    label {
-      display: inline-block;
-      width: 150px;
-      text-align: right;
-    }
+  label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+  }
 
-    select,
-    input[type="checkbox"] {
-      display: inline-block;
-      vertical-align: middle;
-    }
+  select,
+  input[type="checkbox"],
+  input[type="file"] {
+    display: inline-block;
+    vertical-align: middle;
+  }
 
     /* تنسيق الزر */
-    input[type="submit"] {
-      display: block;
-      width: 200px;
-      margin: 0 auto;
-      background-color: #004aad;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #002b6b;
-    }
-    /* تجميل خانة CAPTCHA */
-label[for="captcha"] {
-  display: inline-block;
-  color: #004aad;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-#captchaQuestion {
-  font-size: 16px;
-  color: #333;
-  font-weight: bold;
-  color:blue;
-}
-
-input[type="text"]#captcha {
-  width: 30%;
-  margin-left:100px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 20px;
-  color:blue;
-}
-
+  input[type="submit"] {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    background-color: #004aad;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  input[type="submit"]:hover {
+    background-color: #002b6b;
+  }
   </style>
 </head>
 
 <body>
+  <h1>حجز موعد</h1>
   <form id="appointmentForm">
     <label for="name">الاسم:</label>
     <input type="text" id="name" name="name" required><br><br>
@@ -181,14 +152,15 @@ input[type="text"]#captcha {
 
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    // الحصول على النموذج
+    // الحصول على النموذج والزر المقدمة
     var form = document.getElementById('appointmentForm');
     var submitBtn = document.getElementById('submitBtn');
 
     // دالة لإنشاء سؤال CAPTCHA
     function generateCaptchaQuestion() {
-      var num1 = Math.floor(Math.random() * 10);
-      var num2 = Math.floor(Math.random() * 10);
+      // تعديل: استخدام أرقام عشوائية بين 1 و 10
+      var num1 = Math.floor(Math.random() * 10) + 1;
+      var num2 = Math.floor(Math.random() * 10) + 1;
       var question = 'ما هو مجموع ' + num1 + ' و ' + num2 + '؟';
       var answer = num1 + num2;
       document.getElementById('captchaQuestion').textContent = question;
@@ -200,6 +172,18 @@ input[type="text"]#captcha {
 
     // Function to send the email
     function sendEmail() {
+      var name = document.getElementById('name').value;
+      var gender = document.getElementById('gender').value;
+     
+      var services = Array.from(document.getElementById('services').options)
+        .filter(option => option.selected)
+        .map(option => option.value)
+        .join(', ');
+      var phone = document.getElementById('phone').value;
+      var date = document.getElementById('date').value;
+      var time = document.getElementById('time').value;
+      var reason = document.getElementById('reason').value;
+      
       var templateParams = {
         name: name,
         gender: gender,
@@ -210,7 +194,7 @@ input[type="text"]#captcha {
         reason: reason,
       };
 
-      // Replace with your EmailJS service ID and template ID
+      // إرسال البريد الإلكتروني باستخدام EmailJS
       emailjs.send("service_ql110ut", "template_lg2nhwj", templateParams, "user_7wKvCLIVPb3U73ngz")
         .then(function (response) {
           console.log("Email sent successfully!", response);
@@ -221,40 +205,21 @@ input[type="text"]#captcha {
 
     // تعيين الحدث على إرسال النموذج
     form.addEventListener('submit', function(event) {
-      // منع سلوك الافتراضي للنموذج
       event.preventDefault();
 
-      // جمع البيانات من النموذج
-      var name = document.getElementById('name').value;
-      var gender = document.getElementById('gender').value;
-      var services = Array.from(document.getElementById('services').options)
-        .filter(option => option.selected)
-        .map(option => option.value)
-        .join(', ');
-      var phone = document.getElementById('phone').value;
-      var date = document.getElementById('date').value;
-      var time = document.getElementById('time').value;
-      var reason = document.getElementById('reason').value;
-      
       var captchaAnswer = parseInt(document.getElementById('captcha').value, 10);
 
       // التحقق من صحة الإجابة
       if (captchaAnswer === correctAnswer) {
-        // إرسال النموذج إذا كانت الإجابة صحيحة
         alert('تم تأكيد أنك إنسان!');
-        sendEmail(); // إرسال البريد الإلكتروني
-        form.submit();
+        sendEmail();
       } else {
-        // عرض رسالة خطأ إذا كانت الإجابة غير صحيحة
         alert('الرجاء إعادة المحاولة. الجواب غير صحيح.');
-        // إعادة إنشاء سؤال CAPTCHA جديد بعد كل محاولة
         correctAnswer = generateCaptchaQuestion();
-        // مسح إجابة المستخدم المدخلة
         document.getElementById('captcha').value = '';
       }
     });
   </script>
 </body>
-</html>
 
-      
+</html>
