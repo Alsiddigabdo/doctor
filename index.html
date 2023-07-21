@@ -109,8 +109,81 @@
   </style>
 </head>
 
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>حجز موعد</title>
+  <style>
+    /* الستايل هنا */
+    body {
+      background-image: url('path/to/flowers.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f9f9f9;
+    }
+
+    form {
+      width: 500px;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      margin-top: 100px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #004aad;
+      margin-top: 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #fff;
+      padding: 10px 0;
+      z-index: 9999;
+    }
+
+    label {
+      display: inline-block;
+      width: 150px;
+      text-align: right;
+    }
+
+    select,
+    input[type="checkbox"],
+    input[type="file"] {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    input[type="submit"] {
+      display: block;
+      width: 200px;
+      margin: 0 auto;
+      background-color: #004aad;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #002b6b;
+    }
+  </style>
+</head>
+
 <body>
-  <h1>حجز موعد1</h1>
+  <h1>حجز موعد</h1>
   <form id="appointmentForm">
     <label for="name">الاسم:</label>
     <input type="text" id="name" name="name" required><br><br>
@@ -150,13 +223,13 @@
 
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    // الحصول على النموذج والزر المقدمة
+    emailjs.init("7wKvCLIVPb3U73ngz"); // تهيئة المفتاح الخاص بك هنا
+
     var form = document.getElementById('appointmentForm');
     var submitBtn = document.getElementById('submitBtn');
+    var correctAnswer = generateCaptchaQuestion();
 
-    // دالة لإنشاء سؤال CAPTCHA
     function generateCaptchaQuestion() {
-      // تعديل: استخدام أرقام عشوائية بين 1 و 10
       var num1 = Math.floor(Math.random() * 10) + 1;
       var num2 = Math.floor(Math.random() * 10) + 1;
       var question = 'ما هو مجموع ' + num1 + ' و ' + num2 + '؟';
@@ -165,30 +238,55 @@
       return answer;
     }
 
-    // تنفيذ دالة إنشاء CAPTCHA عند تحميل الصفحة
-    var correctAnswer = generateCaptchaQuestion();
-
-    // Function to send the email
+    // دالة لإرسال البريد الإلكتروني
     function sendEmail() {
       var name = document.getElementById('name').value;
       var gender = document.getElementById('gender').value;
-     
       var services = Array.from(document.getElementById('services').options)
         .filter(option => option.selected)
         .map(option => option.value)
         .join(', ');
       var phone = document.getElementById('phone').value;
-      
       var date = document.getElementById('date').value;
       var time = document.getElementById('time').value;
       var reason = document.getElementById('reason').value;
 
+      // استخدام خدمة البريد الإلكتروني لإرسال الحجز
+      emailjs.send("service_ql110ut", "template_lg2nhwj", {
+        to_email: "sediagtahoy@gmail.com", // البريد الإلكتروني الذي سيتم إرسال الحجوزات إليه
+        name: name,
+        gender: gender,
+        services: services,
+        phone: phone,
+        date: date,
+        time: time,
+        reason: reason
+      }).then(function(response) {
+        alert('تم الحجز بنجاح!');
+      }, function(error) {
+        alert('حدث خطأ أثناء إرسال الحجز. الرجاء المحاولة مرة أخرى.');
+      });
+    }
+
+    // دالة للتحقق من صحة CAPTCHA وإرسال البريد عندما تكون الإجابة
+
+
+
+User
+واصل
+
+ChatGPT
+صحيحة
+
+html
+Copy code
+    // دالة للتحقق من صحة CAPTCHA وإرسال البريد عندما تكون الإجابة صحيحة
+    function validateCaptcha() {
       var captchaAnswer = parseInt(document.getElementById('captcha').value, 10);
 
-      // التحقق من صحة الإجابة
       if (captchaAnswer === correctAnswer) {
         alert('تم تأكيد أنك إنسان!');
-        sendEmail();
+        sendEmail(); // استدعاء دالة إرسال البريد الإلكتروني
       } else {
         alert('الرجاء إعادة المحاولة. الجواب غير صحيح.');
         correctAnswer = generateCaptchaQuestion();
