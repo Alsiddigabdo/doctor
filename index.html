@@ -5,6 +5,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- رابط مكتبة SweetAlert -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.0/dist/sweetalert2.min.css">
+
   <title>حجز موعد</title>
   <style>
     /* الستايل هنا */
@@ -20,11 +24,12 @@
       padding: 20px;
       background-color: #fff;
       border-radius: 5px;
-      margin-top: 80px;
+      margin-top: 100px;
     }
 
 
     h1 {
+      
       text-align: center;
       color: #004aad;
       margin-top: 0;
@@ -129,39 +134,113 @@ label[for="captcha"] {
   color: #333;
   font-weight: bold;
 }
+.medical-icon {
   
+    font-size: 35px;
+    margin-top:40px ;
+    color: skyblue; /* اللون البني */
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+
+.line {
+  width: 100px;
+  height: 2px;
+  margin-left :100px ;
+  bottom:8px;
+  color: blue;
+  position: relative;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scaleX(1);
+    background-color: blue;
+  }
+  50% {
+    transform: scaleX(1.5);
+    background-color: blue;
+  }
+  100% {
+    transform: scaleX(1);
+    background-color: skyblue;
+  }
+}
+.blue-icon {
+/* تحديد الأبعاد الافتراضية للعنصر */
+  width: 30px;
+  height: 30px;
+  /* تحديد الألوان والتأثيرات المناسبة للرمز */
+  color: blue;
+  transition: transform 0.3s ease-in-out;
+}
+.alert {
+  border: 1px solid #6a9bcf;
+  border-radius: 4px;
+  background-color: #f0f7fd;
+  padding: 10px;
+  color: #004aad;
+  font-size: 16px;
+  margin-top: 20px;
+  display: none;
+}
+
+
   </style>
 </head>
 
 <body>
-  <h1>حجز موعد</h1>
+  <h1>  <i class="medical-icon fas fa-heartbeat"></i>  حجز موعد </h1>
   <form id="appointmentForm">
-    <label for="name">الاسم:</label>
+    
+
+    <label for="name">:الاسم <i class="icon fas fa-user"></i>
+</label>
     <input type="text" id="name" name="name" required><br><br>
 
-    <label for="gender">النوع:</label>
+    <label for="gender">: النوع  <i class="icon fas fa-mars"></i> <!-- للذكور -->
+    <i class="icon fas fa-venus"></i> <!-- للإناث -->
+    </body></label>
     <select id="gender" name="gender" required>
       <option value="ذكر">ذكر</option>
       <option value="أنثى">أنثى</option>
     </select><br><br>
+    
+    
+  
+    
 
-    <label for="services">الخدمات المتاحة:</label>
+
+    <label for="services">:الخدمات المتاحة    <i class="fas fa-cog"></i></label>
+        <div class="line"></div>
     <select id="services" name="services" multiple required>
       <option value="service1">الخدمة 1</option>
       <option value="service2">الخدمة 2</option>
       <option value="service3">الخدمة 3</option>
     </select><br><br>
 
-    <label for="phone">رقم الهاتف:</label>
+    <label for="phone">: رقم الهاتف   <i class="fas fa-phone"></i></label>
     <input type="tel" id="phone" name="phone" required><br><br>
 
-    <label for="date">تاريخ الحجز:</label>
+    <label for="date">:تاريخ الحجز       <i class="fas fa-calendar-alt"></i></label>
     <input type="date" id="date" name="date" required><br><br>
 
-    <label for="time">وقت الحجز:</label>
+    <label for="time">: وقت الحجز    <i class="fas fa-clock"></i></label>
     <input type="time" id="time" name="time" required><br><br>
 
-    <label for="reason">سبب الحجز:</label>
+    <label for="reason">:  سبب الحجز      <i class="fas fa-calendar-check"></i></label>
     <textarea id="reason" name="reason" required></textarea><br><br>
 
     <!-- مجال الـ CAPTCHA -->
@@ -170,8 +249,12 @@ label[for="captcha"] {
     <input type="text" id="captcha" required><br><br>
 
     <input type="submit" value="حجز الموعد" id="submitBtn">
+    
   </form>
+  
 
+  
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.0/dist/sweetalert2.all.min.js"></script>
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
     emailjs.init("7wKvCLIVPb3U73ngz"); // تهيئة المفتاح الخاص بك هنا
