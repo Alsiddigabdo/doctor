@@ -7,7 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- رابط مكتبة SweetAlert -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.0/dist/sweetalert2.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.0/dist/sweetalert2.all.min.js"></script>
+
 
   <title>حجز موعد</title>
   <style>
@@ -252,9 +254,10 @@ label[for="captcha"] {
     
   </form>
   
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.0/dist/sweetalert2.all.min.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.0/dist/sweetalert2.all.min.js"></script>
+
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
     emailjs.init("7wKvCLIVPb3U73ngz"); // تهيئة المفتاح الخاص بك هنا
@@ -274,35 +277,61 @@ label[for="captcha"] {
 
     // دالة لإرسال البريد الإلكتروني
     function sendEmail() {
-      var name = document.getElementById('name').value;
-      var gender = document.getElementById('gender').value;
-      var services = Array.from(document.getElementById('services').options)
-        .filter(option => option.selected)
-        .map(option => option.value)
-        .join(', ');
-      var phone = document.getElementById('phone').value;
-      var date = document.getElementById('date').value;
-      var time = document.getElementById('time').value;
-      var reason = document.getElementById('reason').value;
-
-      // استخدام خدمة البريد الإلكتروني لإرسال الحجز
-      emailjs.send("service_ql110ut", "template_lg2nhwj", {
-        to_email: "sediagtahoy@gmail.com", // البريد الإلكتروني الذي سيتم إرسال الحجوزات إليه
-        name: name,
-        gender: gender,
-        services: services,
-        phone: phone,
-        date: date,
-        time: time,
-        reason: reason
-      }).then(function(response) {
-        alert('تم الحجز بنجاح!');
-      }, function(error) {
-        alert('حدث خطأ أثناء إرسال الحجز. الرجاء المحاولة مرة أخرى.');
-      });
-    }
-
+     var name = document.getElementById('name').value;
+     var gender = document.getElementById('gender').value;
+     var services = Array.from(document.getElementById('services').options)
+       .filter(option => option.selected)
+       .map(option => option.value)
+       .join(', ');
+     var phone = document.getElementById('phone').value;
+     var date = document.getElementById('date').value;
+     var time = document.getElementById('time').value;
+     var reason = document.getElementById('reason').value;
    
+     // استخدام خدمة البريد الإلكتروني لإرسال الحجز
+   
+     // عرض شريط التحميل أثناء إرسال الحجز
+     Swal.fire({
+       title: 'جارٍ الحجز...',
+       allowOutsideClick: false,
+       onBeforeOpen: () => {
+         Swal.showLoading();
+       }
+     });
+   
+     emailjs.send("service_ql110ut", "template_lg2nhwj", {
+       to_email: "sediagtahoy@gmail.com",
+       name: name,
+       gender: gender,
+       services: services,
+       phone: phone,
+       date: date,
+       time: time,
+       reason: reason
+     }).then(function(response) {
+       // إخفاء شريط التحميل عند إتمام الحجز بنجاح
+       Swal.close();
+   
+       // عرض رسالة تأكيد الحجز
+       Swal.fire({
+         title: 'تم الحجز بنجاح!',
+         icon: 'success',
+         timer: 2000, // يمكنك تعديل هذا الوقت حسب رغبتك
+         showConfirmButton: false
+       });
+     }, function(error) {
+       // إخفاء شريط التحميل في حالة حدوث خطأ أثناء الحجز
+       Swal.close();
+   
+       // عرض رسالة خطأ في حالة فشل الحجز
+       Swal.fire({
+         title: 'حدث خطأ أثناء إرسال الحجز. الرجاء المحاولة مرة أخرى.',
+         icon: 'error',
+         timer: 2000, // يمكنك تعديل هذا الوقت حسب رغبتك
+         showConfirmButton: false
+       });
+     });
+   }
     // دالة للتحقق من صحة CAPTCHA وإرسال البريد عندما تكون الإجابة صحيحة
     function validateCaptcha() {
       var captchaAnswer = parseInt(document.getElementById('captcha').value, 10);
