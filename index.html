@@ -226,7 +226,7 @@ label[for="captcha"] {
 
 
     <label for="services">:الخدمات المتاحة    <i class="fas fa-cog"></i></label>
-        
+        <div class="line"></div>
     <select id="services" name="services" multiple required>
       <option value="service1">الخدمة 1</option>
       <option value="service2">الخدمة 2</option>
@@ -234,10 +234,7 @@ label[for="captcha"] {
     </select><br><br>
 
     <label for="phone">: رقم الهاتف   <i class="fas fa-phone"></i></label>
-    <input type="tel" id="phone" name="phone" required><br>
-    <label for="email">البريد الإلكتروني:</label>
-<input type="email" id="email" name="email" required><br><br>
-<br>
+    <input type="tel" id="phone" name="phone" required><br><br>
 
     <label for="date">:تاريخ الحجز       <i class="fas fa-calendar-alt"></i></label>
     <input type="date" id="date" name="date" required><br><br>
@@ -354,21 +351,7 @@ label[for="captcha"] {
       event.preventDefault();
       validateCaptcha(); // قم بالتحقق من صحة الـ CAPTCHA
     });
-      // دالة لإرسال رسالة التأكيد
-      function sendConfirmationEmail(email) {
-        emailjs.send("service_ql110ut", "template_lg2nhwj", {
-          to_email: email,
-          subject: "تم تأكيد حجزك",
-          body: "تم تأكيد حجزك بنجاح. شكرًا لك على استخدام خدمتنا."
-        }).then(function(response) {
-          console.log("تم إرسال رسالة التأكيد بنجاح!", response);
-        }, function(error) {
-          console.error("حدث خطأ أثناء إرسال رسالة التأكيد.", error);
-        });
-      }
-      sendConfirmationEmail(document.getElementById('email').value); // استدعاء دالة إرسال رسالة التأكيد
-
   </script>
 </body>
 
-</html> 
+</html>
