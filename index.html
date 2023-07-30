@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      
     <!-- رابط مكتبة SweetAlert -->
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.0/dist/sweetalert2.all.min.js"></script>
@@ -15,41 +16,72 @@
   <style>
     /* الستايل هنا */
     body {
-          display: flex;
+
+            background: 		#ccc;
+            max-width: 100%
+
           justify-content: center;
           align-items: center;
-          background-color: #f9f9f9;
+          color:white ;
+
         }
 
-    form {
-      width: 400px;
+form {
+      width: 80%;
       padding: 20px;
-      background-color: #fff;
-      border-radius: 5px;
-      margin-top: 100px;
+      border-radius: 50px;
+      margin-top: 10px;
+      border: none;
+      outline: none;
+      background:  #38ACEC;
+      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2),
+        inset 0 0 5px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease-in-out;
     }
+    
+    
+.element {
+  width: 200px;
+  height: 100px;
+  position: relative;
+  background-color: #fff;
+}
 
+.element::before,
+.element::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 
-    h1 {
-      
-      text-align: center;
-      color: #004aad;
-      margin-top: 0;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      height:80px;
-      background-color: #fff;
-      padding: 10px 0;
-      z-index: 9999;
+.element::before {
+  top: -4px;
+  left: -4px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.element::after {
+  top: -8px;
+  left: -8px;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+    
+    form:hover {
+      box-shadow:black;
     }
 
 
     label {
       display: block;
-      color: #004aad;
-      margin-bottom: 10px;
+      color: #fff ;
+      margin-bottom: 2px;
       text-align: center;
+      font-size: 18px;
+  font-weight: ;
     }
 
     input[type="text"],
@@ -63,7 +95,7 @@
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
-      border-radius: 4px;
+      border-radius: 50px;
       box-sizing: border-box;
       font-family: Arial, sans-serif;
       font-size: 16px;
@@ -71,20 +103,20 @@
     }
 
     input[type="submit"]:hover {
-      background-color: #002b6b;
+      background-color:black;
     }
     input[type="submit"]:hover {
-      background-color: #002b6b;
+      background-color: black;
     }
         /* تنسيق الزر */
     input[type="submit"] {
       display: block;
       width: 200px;
       margin: 0 auto;
-      background-color: #004aad;
+      background-color: blue;
       color: #fff;
       border: none;
-      border-radius: 4px;
+      border-radius: 50px;
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
@@ -92,18 +124,15 @@
     /* تجميل وتحديد شكل عنصر select */
 select {
   display: block;
-  width: 300px; /* تعديل حجم العنصر حسب الحاجة */
+  width: 80px; /* تعديل حجم العنصر حسب الحاجة */
   margin: 0 auto; /* وضع العنصر في وسط الشاشة أفقيًا */
   padding: 10px;
-  border: 2px solid #004aad;
+  border: 2px solid black;
   border-radius: 8px;
   font-size: 16px;
-  color: #333;
+  color: black;
   background-color: #fff;
   appearance: none; /* إزالة الأسلوب الافتراضي لعنصر select */
-  background-image: url('path/to/custom-arrow.png'); /* إضافة صورة أيقونة السهم الخاصة بالعنصر */
-  background-repeat: no-repeat;
-  background-position: right center; /* وضع الأيقونة عند اليمين ووسط العنصر */
   cursor: pointer;
 }
 
@@ -111,7 +140,7 @@ select {
 select option {
   padding: 10px;
   font-size: 16px;
-  color: #333;
+  color: #fff;
   background-color: #fff;
   border-bottom: 1px solid #ccc;
 }
@@ -119,9 +148,21 @@ select option {
 /* تغيير شكل العنصر عند التفاعل معه */
 select:hover,
 select:focus {
-  border-color: #002b6b; /* تغيير لون الحدود عند التحويم بالفأرة أو التركيز */
-  box-shadow: 0 0 5px rgba(0, 42, 107, 0.5); /* إضافة ظل للعنصر عند التحويم بالفأرة أو التركيز */
+  border-color: darkblue; /* تغيير لون الحدود عند التحويم بالفأرة أو التركيز */
+  box-shadow: black; /* إضافة ظل للعنصر عند التحويم بالفأرة أو التركيز */
 }
+
+/* إضافة الأيقونة كسهم مخصص للـ select */
+select::after {
+  font-family: "Font Awesome 5 Free"; /* اسم الخط الخاص بـ Font Awesome */
+  content: "\f078"; /* رمز الأيقونة الخاص بالسهم الذي ترغب في استخدامه */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none; /* لمنع تداخل الأيقونة مع نص الخيار المحدد */
+}
+استبدل رمز الأيقونة "
 /* تجميل خانة CAPTCHA */
 label[for="captcha"] {
   display: inline-block;
@@ -140,7 +181,7 @@ label[for="captcha"] {
   
     font-size: 35px;
     margin-top:40px ;
-    color: skyblue; /* اللون البني */
+    color: white ; /* اللون البني */
     animation: bounce 2s infinite;
 }
 
@@ -157,35 +198,13 @@ label[for="captcha"] {
 }
 
 
-.line {
-  width: 100px;
-  height: 2px;
-  margin-left :100px ;
-  bottom:8px;
-  color: blue;
-  position: relative;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0% {
-    transform: scaleX(1);
-    background-color: blue;
-  }
-  50% {
-    transform: scaleX(1.5);
-    background-color: blue;
-  }
-  100% {
-    transform: scaleX(1);
-    background-color: skyblue;
-  }
-}
+
 .blue-icon {
 /* تحديد الأبعاد الافتراضية للعنصر */
   width: 30px;
   height: 30px;
   /* تحديد الألوان والتأثيرات المناسبة للرمز */
-  color: blue;
+  color: black;
   transition: transform 0.3s ease-in-out;
 }
 .alert {
@@ -200,60 +219,169 @@ label[for="captcha"] {
 }
 
 
+
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 2%;
+margin-top:180px;
+    }
+
+    /* أسلوب الكارد */
+    .card {
+      background-color :#fff;
+        width: 150px;
+        height: 150px;
+        background-color: #f2f2f2;
+        margin-right: 10px;
+        margin-bottom:10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;  
+        border-radius:50px;
+        
+    }
+
+    /* حجم الصورة داخل الكارد */
+    .card img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+    
+    /* استخدام flexbox لتنظيم العناصر في صفوف */
+    .row {
+        display: flex;
+        flex-direction: row-reverse; /* هنا استخدمت الاتجاه العكسي للصفوف لتنظيم الأيقونات من اليمين لليسار */
+        justify-content: flex-start; /* هنا قمت بتحديد موضع العناصر في الصف */
+    }
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background:#38ACEC ;
+  color: #fff;
+  padding: px;
+  text-align: center;
+  border-radius: 0 0 50% 2%;
+}
+header h1 {
+  font-size: 40px;
+  font-weight: bold;
+  color: white ;
+
+}
+footer {
+  background-color: #fff;
+  color: black;
+  text-align: center;
+
+  bottom: 0;
+  padding: 10px;
+  border-radius: 50% 2% 0% 0%;
+}
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content {
+  flex: 1;
+}
+
+
+
   </style>
 </head>
+<header>
+  <div class="header">
+  <h1>حجز موعد</h1>
+</div>
+
+</header>
 
 <body>
-  <h1>  <i class="medical-icon fas fa-heartbeat"></i>  حجز موعد </h1>
+  
+  <div class="container">
+    <div class="row">
+      <div class="card">
+        <img src="https://icon-icons.com/downloadimage.php?id=10017&root=52/PNG/96/&file=microscope_medical_10736.png" alt="صورة 1">
+      </div>
+      <div class="card">
+        <img src="https://icon-icons.com/downloadimage.php?id=10023&root=52/PNG/96/&file=signofhealth_medical_10742.png" alt="صورة 2">
+      </div>
+    </div>
+    <div class="row">
+      <div class="card">
+        <img src="https://icon-icons.com/downloadimage.php?id=10014&root=52/PNG/96/&file=pills_medical_10733.png" alt="صورة 3">
+      </div>
+      <div class="card">
+        <img src="https://icon-icons.com/downloadimage.php?id=140641&root=2269/PNG/96/&file=medical_gloves_gloves_medical_hygiene_surgery_icon_140641.png" alt="صورة 4">
+      </div>
+    </div>
+  </div>
+
+
+
+       
+  
+
+<center>
+  
   <form id="appointmentForm">
-    
-
-    <label for="name">:الاسم <i class="icon fas fa-user"></i>
-</label>
-    <input type="text" id="name" name="name" required><br><br>
-
-    <label for="gender">: النوع  <i class="icon fas fa-mars"></i> <!-- للذكور -->
-    <i class="icon fas fa-venus"></i> <!-- للإناث -->
-    </label>
-    <select id="gender" name="gender" required>
-      <option value="ذكر">ذكر</option>
-      <option value="أنثى">أنثى</option>
-    </select><br><br>
-    
-    
+      <label for="name">الاسم:</label>
+      <input type="text" id="name" name="name" required>
+            <label for="phone">رقم الهاتف:</label>
+      <input type="tel" id="phone" name="phone" required>
+            <label for="reason">سبب الحجز:</label>
+      <textarea id="reason" name="reason" required></textarea>
   
-    
-
-
-    <label for="services">:الخدمات المتاحة    <i class="fas fa-cog"></i></label>
-        <div class="line"></div>
-    <select id="services" name="services" multiple required>
-      <option value="service1">الخدمة 1</option>
-      <option value="service2">الخدمة 2</option>
-      <option value="service3">الخدمة 3</option>
-    </select><br><br>
-
-    <label for="phone">: رقم الهاتف   <i class="fas fa-phone"></i></label>
-    <input type="tel" id="phone" name="phone" required><br><br>
-
-    <label for="date">:تاريخ الحجز       <i class="fas fa-calendar-alt"></i></label>
-    <input type="date" id="date" name="date" required><br><br>
-
-    <label for="time">: وقت الحجز    <i class="fas fa-clock"></i></label>
-    <input type="time" id="time" name="time" required><br><br>
-
-    <label for="reason">:  سبب الحجز      <i class="fas fa-calendar-check"></i></label>
-    <textarea id="reason" name="reason" required></textarea><br><br>
-
-    <!-- مجال الـ CAPTCHA -->
-    <label for="captcha">أدخل الناتج:</label>
-    <span id="captchaQuestion"></span> <!-- عرض السؤال هنا -->
-    <input type="text" id="captcha" required><br><br>
-
-    <input type="submit" value="حجز الموعد" id="submitBtn">
-    
-  </form>
+      <label for="gender">النوع:</label>
+      <select id="gender" name="gender" required>
+        <option value="ذكر">>>ذكر</option>
+        <option value="أنثى">>>أنثى</option>
+      </select>
   
+      <label for="services">الخدمات المتاحة:</label>
+      <select id="services" name="services" multiple required>
+        <option value="service1">الخدمة 1</option>
+        <option value="service2">الخدمة 2</option>
+        <option value="service3">الخدمة 3</option>
+      </select><br><br>
+  
+
+  
+      <label for="date">تاريخ الحجز:</label>
+      <input type="date" id="date" name="date" required><br><br>
+  
+      <label for="time">وقت الحجز:</label>
+      <input type="time" id="time" name="time" required><br><br>
+  
+
+  
+      <!-- مجال الـ CAPTCHA -->
+      <label for="captcha">أدخل الناتج:</label>
+      <span id="captchaQuestion"></span> <!-- عرض السؤال هنا -->
+      <input type="text" id="captcha" required><br><br>
+  
+      <input type="submit" value="حجز الموعد" id="submitBtn">
+    </form></center>
+  <br>
+       <center>
+            <img src="https://up6.cc/2023/07/169067158689062.png" width="300px" 
+            
+            height ="400px"
+            alt="صورة">
+    </center>
+  
+  
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.0/dist/sweetalert2.all.min.js"></script>
 
   
@@ -353,5 +481,6 @@ label[for="captcha"] {
     });
   </script>
 </body>
+
 
 </html>
