@@ -21,6 +21,7 @@
             max-width: 100%
 
           justify-content: center;
+          font-family :'Lato', sans-serif;
           align-items: center;
           color:white ;
           margin:0px;
@@ -30,15 +31,17 @@
 form {
       width: 80%;
       padding: 20px;
-      border-radius: 50px;
+      border-radius: 15px;
+      
       margin-top: 10px;
       border: none;
       outline: none;
       background:  #fff;
-      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2),
-        inset 0 0 5px rgba(0, 0, 0, 0.1);
+
       transition: box-shadow 0.3s ease-in-out;
-    }
+     لتبدو الزوايا أكثر نعومة */ box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+     /* إضافة ظل خفيف للكارد */
+     }
     
     
 .element {
@@ -81,8 +84,10 @@ form {
       color: black;
       margin-bottom: 2px;
       text-align: center;
+      font-family: 'Lato', sans-serif;
       font-size: 18px;
-  font-weight: ;
+      font-style: bold;
+  
     }
 
     input[type="text"],
@@ -98,9 +103,9 @@ form {
       border: 1px solid #ccc;
       border-radius: 5px;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: 'Lato', sans-serif;
       font-size: 16px;
-      color: #333;
+      color: #151B25;
     }
 
     input[type="submit"]:hover {
@@ -114,7 +119,7 @@ form {
       display: block;
       width: 200px;
       margin: 0 auto;
-      background-color: blue;
+      background-color: #0563af;
       color: #fff;
       border: none;
       border-radius: 50px;
@@ -231,19 +236,18 @@ label[for="captcha"] {
 margin-top:50px;
     }
 
-    /* أسلوب الكارد */
-    .card {
-        width: 150px;
-        height: 150px;
-        background-color: #fff;
-        margin-right: 10px;
-        margin-bottom:10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;  
-        border-radius:50px;
-        
-    }
+.card {
+    width: 150px;
+    height: 150px;
+    background-color: #your_color_here; /* استبدل بلونك المفضل */
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px; /* أقل قليلا لتبدو الزوايا أكثر نعومة */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف للكارد */
+}
 
     /* حجم الصورة داخل الكارد */
     .card img {
@@ -444,6 +448,52 @@ p {
   }
 }
 
+.box {
+  position: relative;
+  top: 10%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  margin-top: 40px;
+  top: 50%;
+  left: 50%;
+}
+
+.box select {
+  background-color: #0563af;
+  color: white;
+  padding: 12px;
+  width: 100px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.box::before {
+  content: "\f13a";
+  font-family: FontAwesome;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.box select option {
+  padding: 30px;
+}
 
 
 
@@ -512,6 +562,7 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 
 <center>
   
+  
   <form id="appointmentForm">
       <label for="name">الاسم:</label>
       <input type="text" id="name" name="name" required>
@@ -520,18 +571,23 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
             <label for="reason">سبب الحجز:</label>
       <textarea id="reason" name="reason" required></textarea>
   
-      <label for="gender">النوع:</label>
+      <div class="box">
+              <label for="services"> النوع:</label>
       <select id="gender" name="gender" required>
-        <option value="ذكر">>>ذكر</option>
-        <option value="أنثى">>>أنثى</option>
+        <option value="ذكر">ذكر</option>
+        <option value="انثي">انثي</option></option>
       </select>
+      </div>
   
+        <div class="box">
       <label for="services">الخدمات المتاحة:</label>
       <select id="services" name="services" multiple required>
         <option value="service1">الخدمة 1</option>
         <option value="service2">الخدمة 2</option>
         <option value="service3">الخدمة 3</option>
-      </select><br><br>
+      </select>
+      </div>
+      <br><br>
   
 
   
